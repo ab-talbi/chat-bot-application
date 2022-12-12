@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>IRISI Chatbot</title>
 
-    <title>Skolo</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script> 
 
   </head>
   <body>
-    <div class="container">
-      <h1>Welcome to Skolo Chatbot</h1>
-      <br>
-      <hr>
-      <br>
+   
+    <div class="chat" id="chat"></div>
 
-        <div class="row">
-          <div class="col-lg-9">
-            <input class="form-control" type="text" name="question" id="question">
-          </div>
-          <div class="col-lg-3">
-            <button class="btn btn-primary btn-block" id="submit-button">Send</button>
-          </div>
+    <div class="main">
+     <div class=head>
+        <div class="earl"></div>
+        <div class="earr"></div>
+         <div class="face">
+            <div class="eyel"></div>
+            <div class="eyer"></div>
+            <div class="mouth"></div>
+         </div>
         </div>
-        <br>
-        <div class="row">
-          <div class="col">
-            <p id="response"></p>
-          </div>
-        </div>
-
+      <div align="center" class="a">
+            <div class="neck"><i class="fa fa-gear fa-spin"></i></div>
+            <div class="id">IRISIBOT</div>
+            <div class="box"></div>
+            <div class="lhand">
+                <div class="elbowl"></div>
+            </div>
+            <div class="rhand">
+                <div class="elbowr"></div>
+            </div>
+     </div>
     </div>
+
+    <input type="text"  id="input" placeholder="chat with me">
+    <button id="submit-button"  onclick="chat()"><i class="fa fa-send-o"></i></button>
 
     <script src="/static/jquery.min.js" ></script>
 
@@ -45,34 +54,41 @@
 
     <script>
 
-
-      jQuery(document).ready(function() {
-
-        $("#submit-button").click(function(e) {
-          e.preventDefault();
-
-
-          $.ajax({
-              type: "POST",
-              url: "/chatbot",
-              data: {
-                  question: $("#question").val()
-              },
-              success: function(result) {
-                $("#response").append("<br>Me: "+$("#question").val()+ "<br> Karabo: "+result.response);
-                $("#question").val("")
-              },
-              error: function(result) {
-                  alert('error');
-              }
-          });
-
-
-
-        });
-
+      window.onload = function(){
+        responsiveVoice.speak("hey I am irisibot. ","US English Male",{rate:0.8,volume:1,pitch:0.7});
+      };
+      document.getElementsByTagName("body")[0].addEventListener("keypress" , function (e){
+          if(e.key == "Enter"){
+              chat();
+          }
       });
 
+      function chat(){
+
+        jQuery(document).ready(function() {
+
+            $.ajax({
+                type: "POST",
+                url: "/chatbot",
+                data: {
+                    question: $("#input").val()
+                },
+                success: function(result) {
+                    $("#chat").append("<div class='requeste'>"+$("#input").val()+ "</div> <div class='response'>"+result.response+"</div>");
+                    $("#input").val("")
+                    responsiveVoice.speak(result.response ,"US English Male",{rate:0.8,volume:1,pitch:0.9})
+                },
+                error: function(result) {
+                    alert('error'+result);
+                }
+            });
+        });
+        
+        let scroll = document.getElementsByClassName('response');
+        scroll.scrollIntoView();
+        scroll.scrollIntoView({behavior: "smooth"});
+
+      }
 
     </script>
 

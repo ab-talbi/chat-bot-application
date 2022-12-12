@@ -1,7 +1,7 @@
 import nltk
-nltk.download('omw-1.4')
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 import json
@@ -11,6 +11,7 @@ import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
+# from tensorflow.keras.optimizers import SGD
 import random
 
 words=[]
