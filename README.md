@@ -7,11 +7,13 @@ To get started follow the steps below:
 ```
 virtualenv chatbotenv
 
-source chatbotenv/bin/activate
+source BotVertualenv/bin/activate
 ```
 For windows
 ```
-source chatbotenv/Scripts/activate
+virtualenv chatbotenv
+
+source BotVertualenv/Scripts/activate
 ```
 
 2. Install all the required libraries 
