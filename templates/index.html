@@ -13,39 +13,57 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
     
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script> 
 
   </head>
   <body>
    
-    <div class="chat" id="chat"></div>
+    <div class="box-container hidden">
+      <div class="chat" id="chat">
+        <div class="logo" style="width: 100%; margin: auto; position: relative; left: 35%;">
+          <img src="../static/logoIRISI-White.png" alt="logo" style="width: 100px;">
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="container-footer">
+          <div class="footer">
+            <input type="text" id="input" placeholder="Chat With Me">
+            <button id="submit-button" onclick="chat()"><i class="fa fa-send-o"></i></button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
 
-    <div class="main">
-     <div class=head>
+    <div class="main-start">
+      <div class="head-static">
         <div class="earl"></div>
         <div class="earr"></div>
          <div class="face">
-            <div class="eyel"></div>
-            <div class="eyer"></div>
+            <div class="eyel-red"></div>
+            <div class="eyer-red"></div>
             <div class="mouth"></div>
          </div>
-        </div>
-      <div align="center" class="a">
+      </div>
+      <div align="center" class="a-static">
             <div class="neck"><i class="fa fa-gear fa-spin"></i></div>
-            <div class="id">IRISIBOT</div>
-            <div class="box"></div>
+            <div class="id">IRISI</div>
+            <button class="box" id="start-button" onclick="btn()"></button>
+            <div class="id">BOT</div>
             <div class="lhand">
                 <div class="elbowl"></div>
             </div>
             <div class="rhand">
                 <div class="elbowr"></div>
             </div>
-     </div>
+      </div>
     </div>
 
-    <input type="text"  id="input" placeholder="chat with me">
-    <button id="submit-button"  onclick="chat()"><i class="fa fa-send-o"></i></button>
+    
 
     <script src="/static/jquery.min.js" ></script>
 
@@ -55,15 +73,24 @@
     <script>
 
       window.onload = function(){
-        responsiveVoice.speak("hey I am irisibot. ","US English Male",{rate:0.8,volume:1,pitch:0.7});
+        responsiveVoice.speak("","US English Male",{rate:0.8,volume:1,pitch:0.7});
       };
+
       document.getElementsByTagName("body")[0].addEventListener("keypress" , function (e){
           if(e.key == "Enter"){
               chat();
           }
       });
 
+
       function chat(){
+        
+        if($("#input").val() == "logo"){
+          $("#chat-messages").append("<div class='requeste'>"+$("#input").val()+ "</div> <div class='response'><img src='../static/logoIRISI.png' alt='logo' style='width: 100px;'></div>");
+          $("#input").val("")
+          let x = document.getElementById('chat')
+          x.scrollTop = x.scrollHeight;
+        }
 
         jQuery(document).ready(function() {
 
@@ -74,20 +101,129 @@
                     question: $("#input").val()
                 },
                 success: function(result) {
-                    $("#chat").append("<div class='requeste'>"+$("#input").val()+ "</div> <div class='response'>"+result.response+"</div>");
+                  if($("#input").val() != ""){
+                    $("#chat-messages").append("<div class='requeste'>"+$("#input").val()+ "</div> <div class='response'>"+result.response+"</div>");
                     $("#input").val("")
                     responsiveVoice.speak(result.response ,"US English Male",{rate:0.8,volume:1,pitch:0.9})
+
+                    let x = document.getElementById('chat')
+                    x.scrollTop = x.scrollHeight;
+                  }
+                    
                 },
                 error: function(result) {
                     alert('error'+result);
                 }
             });
         });
+
         
         let scroll = document.getElementsByClassName('response');
         scroll.scrollIntoView();
         scroll.scrollIntoView({behavior: "smooth"});
 
+      }
+
+      let number = 0;
+      function start(){
+        
+          var chat = document.querySelector(".box-container");
+          if(chat !== null){
+            chat.classList.remove("hidden");
+            if(number == 0){
+              jQuery(document).ready($("#chat-messages").append("<div class='response'>Hey I am IRISI BOT, How can I help you</div>"))
+              responsiveVoice.speak("Hey I am irizeiy BOT, How can I help you","US English Male",{rate:0.8,volume:1,pitch:0.7});
+              number++;
+            }else{
+              jQuery(document).ready($("#chat-messages").append("<div class='response'>Hey again!</div>"))
+              let x = document.getElementById('chat')
+              x.scrollTop = x.scrollHeight;
+              responsiveVoice.speak("Hey again","US English Male",{rate:0.8,volume:1,pitch:0.7});
+
+            }
+          }
+
+          var eyel = document.querySelector(".eyel-red");
+          if(eyel !==null){
+            eyel.classList.remove("eyel-red");
+            eyel.classList.add("eyel");
+          }
+
+          var eyer = document.querySelector(".eyer-red");
+          if(eyer !==null){
+            eyer.classList.remove("eyer-red");
+            eyer.classList.add("eyer");
+          }
+
+          var main = document.querySelector(".main-start");
+          if(main !==null){
+            main.classList.remove("main-start");
+            main.classList.add("main");
+          }
+
+          var head = document.querySelector(".head-static");
+          if(head !==null){
+            head.classList.remove("head-static");
+            head.classList.add("head");
+          }
+
+          var a = document.querySelector(".a-static");
+          if(a !==null){
+            a.classList.remove("a-static");
+            a.classList.add("a");
+          }
+        }
+
+        function end(){
+          var chat = document.querySelector(".box-container");
+          if(chat !== null){
+            chat.classList.add("hidden");
+          }
+
+          var eyel = document.querySelector(".eyel");
+          if(eyel !==null){
+            eyel.classList.remove("eyel");
+            eyel.classList.add("eyel-red");
+          }
+
+          var eyer = document.querySelector(".eyer");
+          if(eyer !==null){
+            eyer.classList.remove("eyer");
+            eyer.classList.add("eyer-red");
+          }
+
+          var main = document.querySelector(".main");
+          if(main !==null){
+            main.classList.remove("main");
+            main.classList.add("main-start");
+          }
+
+          var head = document.querySelector(".head");
+          if(head !==null){
+            head.classList.remove("head");
+            head.classList.add("head-static");
+          }
+
+          var a = document.querySelector(".a");
+          if(a !==null){
+            a.classList.remove("a");
+            a.classList.add("a-static");
+          }
+        }
+
+
+
+
+
+      let startbool = true;
+      function btn(){
+        if(startbool == true){
+          start();
+          startbool=false;
+        }else{
+          end();
+          startbool=true;
+        }
       }
 
     </script>
