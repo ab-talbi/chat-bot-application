@@ -1,57 +1,89 @@
 {
   "intents": [
-    {"tag": "greeting",
-     "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day", "Hey", "Ekse", "Hi"],
-     "responses": ["Hi stranger", "Yebo yes, how can I help", "Ey watsupp", "Ekse Hoezit", "Hola", "Hey dude", "You again"]
-    },
-    {"tag": "goodbye",
-     "patterns": ["Bye", "See you later", "Goodbye", "Ok bye", "Bye Bye"],
-     "responses": ["See you!", "Have a nice day", "Sure Bye", "Later dude", "Sayoonara", "Peace out", "Sure dude", "Ciao"]
-    },
-    {"tag": "thanks",
-     "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
-     "responses": ["Happy to help!", "Any time!", "My pleasure", "You are welcome", "Sure dude"]
-    },
-    {"tag": "noanswer",
-     "patterns": [],
-     "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "I am still here dude"]
+    {
+      "tag": "noanswer",
+      "patterns": [""],
+      "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "I am still here dude"]
      },
-     {"tag": "name",
-      "patterns": ["What is your name", "Whats your name", "Tell me your name", "Who are you", "Ungubani", "Tell me about yourself", "You are"],
-      "responses": ["I am Karabo", "My name is Karabo", "You can call me KB for short", "I am Karabo, my friends call me KB", "Karabo is my name"]
-      },
-      {"tag": "options",
-       "patterns": ["What do you do", "How can you help", "What do you know", "What is your purpose", "How can you help"],
-       "responses": ["I can tell you about South Africa", "I can give you interesting facts about South Africa"]
-      },
-     {"tag": "south_africa_info",
-      "patterns": ["South Africa", "What can you tell me about SA", "SA", "Tell me about SA", "What about SA", "What do you know about SA", "Tell me more about SA", "What can you tell me about South Africa", "Tell me about South Africa", "What about South Africa", "What do you know about South Africa", "Tell me more about South Africa"],
-      "responses": ["South Africa is the southern most country in Africa, it has a population of more than 59million people and covers an area of 1221 037m2. South Africa has 11 official languages. The currency used in ZAR our South African Rand which trades at about 15ZAR per 1USD."]
-      },
-      {"tag": "south_africa_facts",
-       "patterns": ["South Africa Facts", "SA Facts", "Give me some facts about SA", "Give me some facts about South Africa", "SA Facts", "SA interesting facts", "South Africa facts", "South Africa interesting facts", "Tell me something interesting"],
-       "responses": [
-         "South Africa is now the only country in the world to have hosted the Soccer, Cricket and Rugby World Cup!",
-         "Table Mountain in Cape Town is believed to be one of the oldest mountains in the world and one of the planet’s 12 main energy centres, radiating magnetic, electric or spiritual energy.",
-         "The Cape Floral Kingdom is one of the world’s six floral kingdoms – and the only one which is wholly contained within a single country.",
-         "Some countries have deserts; some have subtropical forests, right? South Africa has: deserts, wetlands, grasslands, bush, subtropical forests, mountains and escarpments.",
-         "South Africa’s drinking water is rated 3rd best in the world for being safe and ready to drink.",
-         "Water is not all there is to drink in this thirsty country! South Africa’s Cape Winelands have around 560 wineries and 4 400 primary producers. Included in the Cape Winelands region is Route 62, considered the longest wine route in the world. That alone is good reason to visit South Africa if you haven’t yet been!",
-         "What about beer? South African brewery SABMiller ranks – by volume – as the largest brewing company in the world. Saffers love their beer…but the real reason the brewery is so big? SABMiller also supplies up to 50% of China’s beer.",
-         "South Africa is the only country in the entire world that has voluntarily abandoned its nuclear weapons programme.",
-         "The world’s largest themed resort hotel in the world – The Palace of the Lost City – is found in South Africa. Surrounding the Palace is a 25 hectare manmade botanical jungle with almost 2 million plants, trees and shrubs.",
-         "South Africa is extremely rich in mining and minerals and considered the world’s leader with nearly 90% of all the platinum metals on earth and around 41% of all the world’s Gold!",
-         "South Africa is home to the oldest meteor scar in the world – the Vredefort Dome in a town called Parys. The site is a UNESCO World Heritage Site.",
-         "The South African Rovos Rail is considered the most luxurious train in the world.",
-         "South Africa is home to the highest commercial bungi jump in the world at 710 feet.",
-         "General Motors South Africa is the only place outside of the USA to build the Hummer H3!",
-         "Despite the country’s status as a democratic republic, the Province of KwaZulu-Natal has a monarchy, specially provided for by the Constitution. Goodwill Zwelithini kaBhekuzulu is the King of the Zulu Nation, has 27 kids and 6 wives and lives, literally, like a King!",
-         "There are more than 2000 shipwrecks off the South African coast, most dating back at least 500 years.",
-         "The oldest remains of modern humans were found in South Africa and are well over 160,000 years old.",
-         "The Karoo region in the Western Cape is home to some of the best fossils of early dinosaurs. In fact, it is estimated that some 80% of the mammalian fossils found to date were found in the Karoo.",
-         "SA has three capital cities: Pretoria is the Executive Capital, Cape Town the Legislative Capital and Bloemfontein the judicial Capital.",
-         "Can you think of any other place in the world where two Nobel Peace Prize winners lived on the same street? Both Nelson Mandela and Archbishop Desmond Tutu had houses on Vilakazi Street in Soweto"
-       ]
-      }
+     {
+      "tag": "greeting",
+      "patterns": ["Hi there", "Is anyone there?","Hey", "Hello", "Good day", "Hey", "Hi"],
+      "responses": ["Hi stranger", "Yebo yes, how can I help?", "Ey watsupp", "Hey dude"]
+    },
+    {
+      "tag": "selfQ",
+      "patterns": ["How are you", "Are you fin","Are you good"],
+      "responses": ["I'm fin, how can I help?", "I'm good, how can I help?", "good thanks"]
+    },
+    {
+      "tag": "made",
+      "patterns": ["who made you", "Who is the guy who made you"],
+      "responses": ["IRISI's students."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye", "Ok bye", "Bye Bye"],
+      "responses": ["See you!", "Have a nice day", "Sure Bye", "Later dude", "Peace out", "Sure dude"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure", "You are welcome", "Sure dude"]
+    },
+    {
+      "tag": "name",
+      "patterns": ["What is your name", "Whats your name", "Tell me your name", "Who are you", "Tell me about yourself", "You are"],
+      "responses": ["I am IRISIBOT", "My name is IRISIBOT", "You can call me IBOT for short", "I am IRISIBOT, my friends call me IBOT", "IRISIBOT is my name"]
+    },
+    {
+      "tag": "options",
+      "patterns": ["What do you do", "How can you help", "What do you know", "What is your purpose", "How can you help"],
+      "responses": ["I can tell you about IRISI ", "I can give you interesting informations about IRISI"]
+    },
+    {
+      "tag": "IRISI",
+      "patterns": ["IRISI", "What can you tell me about IRISI", "Tell me about IRISI", "What about IRISI", "What do you know about IRISI", "Tell me more about IRISI", "What can you tell me about IRISI", "Tell me about IRISI", "What about IRISI", "What do you know about IRISI", "Tell me more about IRISI"],
+      "responses": ["IRISI: Engineering in Networks and Information Systems (in French it's Ingenirie en Reseaux Informatique et Systemes d'Information). In the vast field of Computer Science, this sector is mainly interested in aspects : Information systems & Computer Networks."]
+    },
+    {
+      "tag": "IRISI_infos",
+      "patterns": ["IRISI infos", "IRISI informations", "Give me some informations about IRISI", "Give me some infos about Engineering in Networks and Information Systems", "IRISI interesting infos", "Engineering in Networks and Information Systems interesting infos", "Tell me something interesting"],
+      "responses": ["The IT engineer specializing in information systems and networks is an actor essential to the business. He is trained to intervene at all levels of the network and the system company information. He brings his skills in the areas of administration data centers and databases, network administration, definition architecture of information systems, the development of applications intended to improve the effectiveness of the business, project management and development team on the systems of information. Its relations with the other departments of the company are essential. The engineer must, in a pragmatic way, be able to formalize the needs with the users and to set up a project methodology with its collaborators."]
+    },
+    {
+      "tag": "modules",
+      "patterns":["modules", "What can you tell me about modules", "Tell me about modules", "What about modules", "What do you know about modules", "Tell me more about modules", "What can you tell me about modules"],
+      "responses":["There ara 40 modules, 8 modules for each semester (1,2,3,4, and 5) and PFE for semester 6."]
+    },
+    {
+      "tag": "semester1",
+      "patterns":["Semester 1", "What can you tell me about Semester 1", "1", "Tell me about Semester 1", "What about Semester 1", "s1", "What do you know about Semester 1", "Tell me more about Semester 1", "What can you tell me about Semester 1"],
+      "responses":["There ara 8 modules for semester 1; Module 1: Microprocesseur et programmation assembleur, Module 2: Linux/Unix, Module 3: Programmations Orientées Objet Cpp, Module 4: Les réseaux, Module 5: Concepts des Bases de Données, Module 6: Programmation Evénementielle .NET, Module 7: Entreprenariat et économie de l'entreprise (3ee), and Module 8: Langues et communication 1."]
+    },
+    {
+      "tag": "semester2",
+      "patterns":["Semester 2", "What can you tell me about Semester 2", "2", "s2", "Tell me about Semester 2", "What about Semester 2", "What do you know about Semester 2", "Tell me more about Semester 2", "What can you tell me about Semester 2"],
+      "responses":["There ara 8 modules for semester 2; Module 9: Architectures Clients/Serveur, Module 10: Méthodologie d'analyse, Module 11: TCP/IP et interconnexion des réseaux, Module 12: Bases de Données Relationnelles, Module 13: Statistique et théorie des graphes, Module 14: Programmations Orientées Objet Java - IHM, Module 15: Techniques de gestion de l'entreprise, and Module 16: Langues et communication 2."]
+    },
+    {
+      "tag": "semester3",
+      "patterns":["Semester 3", "What can you tell me about Semester 3", "3", "Tell me about Semester 3", "What about Semester 3", "s3", "What do you know about Semester 3", "Tell me more about Semester 3", "What can you tell me about Semester 3"],
+      "responses":["There ara 8 modules for semester 3; Module 17: Conception des Systèmes d'Information, Module 18: Systèmes d'Exploitation, Module 19: Conception Objet UML, Module 20: Réseaux Mobiles, Module 21: Administration de Bases de Données, Module 22: Programmation Mobile, Module 23: Fonctions clés de l'Entreprise, and Module 24: Langues et communication 3."]
+    },
+    {
+      "tag": "semester4",
+      "patterns":["Semester 4", "What can you tell me about Semester 4", "4", "Tell me about Semester 4", "What about Semester 4", "s4", "What do you know about Semester 4", "Tell me more about Semester 4", "What can you tell me about Semester 4"],
+      "responses":["There ara 8 modules for semester 4; Module 25: Conduite de Projet Informatique, Module 26: L'Intelligence Artificielle, Module 27: Programmation Concurrentielle et Réseau, Module 28: Bases de Données Reparties, Module 29: Méthodes Agiles, Module 30: Analyse de Données, Module 31: Management de projet et gestion des services publics, and Module 32: Langues et communication 4."]
+    },
+    {
+      "tag": "semester5",
+      "patterns":["Semester 5", "What can you tell me about Semester 5", "Tell me about Semester 5", "What about Semester 5", "5","s5", "What do you know about Semester 5", "Tell me more about Semester 5", "What can you tell me about Semester 5"],
+      "responses":["There ara 8 modules for semester 5; Module 33: Administration des réseaux, Sécurité des réseaux, Module 34: Bases de Données Semi- Structurées, Module 35: Entrepôt de Données, Module 36: Management des Systèmes d'Information, Module 37: Systèmes Répartis, Module 38: Urbanisation et Gouvernance des Systèmes d'Information, Module 39: Bases de Données Objet Relationnelles, and Module 40: Développement Web Java EE."]
+    },
+    {
+      "tag": "semester6",
+      "patterns":["Semester 6", "What can you tell me about Semester 6", "6", "s6", "Tell me about Semester 6", "What about Semester 6", "What do you know about Semester 6", "Tell me more about Semester 6", "What can you tell me about Semester 6"],
+      "responses":["For semester 6, the student will do an end-of-study intership at a company during the semester."]
+    }
   ]
 }
