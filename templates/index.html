@@ -27,6 +27,7 @@
       <div class="chat" id="chat">
         <div class="logo" style="">
           <img src="../static/logoIRISI-White.png" alt="logo" style="width: 100px;">
+          <button id="mute-button" onclick="muteFunc()"><i id="mute-button-i" class="fa fa-microphone"></i></button>
         </div>
         <div class="chat-messages" id="chat-messages"></div>
         <div class="container-footer">
@@ -71,9 +72,25 @@
 
 
     <script>
+      let mute = 1;
+      function muteFunc(){
+        var muteBtn = document.querySelector("#mute-button-i");
+          if(muteBtn !==null){
+            if(mute == 1){
+              muteBtn.classList.remove("fa-microphone");
+              muteBtn.classList.add("fa-microphone-slash");
+              mute = 0;
+            }else{
+              muteBtn.classList.remove("fa-microphone-slash");
+              muteBtn.classList.add("fa-microphone");
+              mute = 1;
+            }
+          }
+      }
+      
 
       window.onload = function(){
-        responsiveVoice.speak("","US English Male",{rate:0.8,volume:1,pitch:0.7});
+        responsiveVoice.speak("","US English Male",{rate:0.8,volume:mute,pitch:0.7});
       };
 
       document.getElementsByTagName("body")[0].addEventListener("keypress" , function (e){
@@ -83,9 +100,10 @@
       });
 
 
+
       function chat(){
         
-        if($("#input").val() == "logo"){
+        if($("#input").val() == "logo" || $("#input").val() == "logo of irisi"){
           $("#chat-messages").append("<div class='requeste'>"+$("#input").val()+ "</div> <div class='response'><img src='../static/logoIRISI.png' alt='logo' style='width: 100px;'></div>");
           $("#input").val("")
           let x = document.getElementById('chat')
@@ -104,7 +122,7 @@
                   if($("#input").val() != ""){
                     $("#chat-messages").append("<div class='requeste'>"+$("#input").val()+ "</div> <div class='response'>"+result.response+"</div>");
                     $("#input").val("")
-                    responsiveVoice.speak(result.response ,"US English Male",{rate:0.8,volume:1,pitch:0.9})
+                    responsiveVoice.speak(result.response ,"US English Male",{rate:0.8,volume:mute,pitch:0.9})
 
                     let x = document.getElementById('chat')
                     x.scrollTop = x.scrollHeight;
@@ -132,13 +150,13 @@
             chat.classList.remove("hidden");
             if(number == 0){
               jQuery(document).ready($("#chat-messages").append("<div class='response'>Hey I am IRISI BOT, How can I help you</div>"))
-              responsiveVoice.speak("Hey I am irizeiy BOT, How can I help you","US English Male",{rate:0.8,volume:1,pitch:0.7});
+              responsiveVoice.speak("Hey I am irizeiy BOT, How can I help you","US English Male",{rate:0.8,volume:mute,pitch:0.7});
               number++;
             }else{
               jQuery(document).ready($("#chat-messages").append("<div class='response'>Hey again!</div>"))
               let x = document.getElementById('chat')
               x.scrollTop = x.scrollHeight;
-              responsiveVoice.speak("Hey again","US English Male",{rate:0.8,volume:1,pitch:0.7});
+              responsiveVoice.speak("Hey again","US English Male",{rate:0.8,volume:mute,pitch:0.7});
 
             }
           }
@@ -164,12 +182,14 @@
           var head = document.querySelector(".head-static");
           if(head !==null){
             head.classList.remove("head-static");
+            head.classList.add("head-move");
             head.classList.add("head");
           }
 
           var a = document.querySelector(".a-static");
           if(a !==null){
             a.classList.remove("a-static");
+            a.classList.add("a-move");
             a.classList.add("a");
           }
         }
@@ -201,18 +221,17 @@
           var head = document.querySelector(".head");
           if(head !==null){
             head.classList.remove("head");
+            head.classList.remove("head-move");
             head.classList.add("head-static");
           }
 
           var a = document.querySelector(".a");
           if(a !==null){
             a.classList.remove("a");
+            a.classList.remove("a-move");
             a.classList.add("a-static");
           }
         }
-
-
-
 
 
       let startbool = true;
