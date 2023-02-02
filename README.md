@@ -1,4 +1,4 @@
-# python-deep-learning-chatbot
+# Chatbot Project
 A deep learning chatbot created with Python and Flask
 
 To get started follow the steps below:
